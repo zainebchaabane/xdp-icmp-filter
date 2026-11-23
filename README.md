@@ -4,8 +4,7 @@
 
 This repository implements a simple network packet filter using **eBPF** and **XDP (eXpress Data Path)** in C.
 
-The program is attached to a Linux network interface and inspects incoming Ethernet frames. It allows IPv4 packets carrying ICMP traffic while dropping all other IPv4 protocols, including TCP and UDP. Non-IPv4 packets are, however, allowed.
-
+The program is attached to a Linux network interface and inspects incoming Ethernet frames. It allows IPv4 packets carrying ICMP traffic while dropping all other IPv4 protocols, including TCP and UDP.
 ## Filtering Logic
 
 The program first examines the Ethernet header to identify the packet's EtherType. If the packet contains IPv4 traffic, it inspects the IPv4 protocol field to determine the appropriate action.
@@ -15,7 +14,7 @@ The program first examines the Ethernet header to identify the packet's EtherTyp
 | IPv4 ICMP | `XDP_PASS` | Allow |
 | IPv4 TCP | `XDP_DROP` | Drop|
 | IPv4 UDP | `XDP_DROP` | Drop |
-| Other IPv4 protocols | `XDP_DROP` | Drop |
+
 
 
 
